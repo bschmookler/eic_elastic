@@ -1,0 +1,19 @@
+Universe        = vanilla
+Notification    = Never
+Executable      = run_eic.csh
+Arguments       = ./run_sim.sh $(ProcID)
+Requirements    = (CPU_Speed >= 2)
+Rank		= CPU_Speed
+request_memory  = 2GB
+request_cpus    = 1
+Priority        = 20
+GetEnv          = False
+Initialdir      = /gpfs02/eic/baraks/epic/running/condor/elastic
+Input           = run_sim.sh
+Output          = jobout/$(ClusterID)_$(ProcID).out
+Error           = jobout/$(ClusterID)_$(ProcID).err
+Log             = jobout/$(ClusterID)_$(ProcID).log
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT_OR_EVICT
+PeriodicHold    = (NumJobStarts >= 1 && JobStatus == 1)
+Queue 10

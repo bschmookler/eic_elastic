@@ -45,8 +45,9 @@ eicrecon -Ppodio:output_file=eicrecon_out.root -Pjana:nevents=100 -Pdd4hep:xml_f
 ```
 The output ROOT file from this simulation can then be analyzed as discussed below.
 
-To do: Add information about running on a batch farm.
+To run events on a HTCondor-based batch farm, use the code in the [condor](condor) subdirectory.
 
 Analysis
 --------
-In progress...
+Example analyses can be found in the [analysis](analysis) subdirectory.
+
