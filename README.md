@@ -24,7 +24,29 @@ Afterburner for beam-crossing and beam-smearing effects
 --------------------------------------------------------
 To include the EIC beam effects to the events created with the above generators, use this [afterburner](https://github.com/eic/afterburner) utility.
 
+If running on the [eic-shell environment](https://eic.github.io/tutorial-setting-up-environment/02-eic-shell/index.html), this utility is included by default. To run the converter, do the following:
+```
+abconv -o elas_gen_5_41_beameffects elas_gen_5_41.hepmc
+```
+This will create a file called ```elas_gen_5_41_beameffects.hepmc```, which can then be used as an input to the <i>ePIC</i> detector simulation.
+
+Running generated events through the ePIC simulation
+----------------------------------------------------
+To run the 100 generated events through the detector simulation, simply do the following:
+```
+source /opt/detector/setup.sh
+
+#Run DIS events through npsim
+ln -s elas_gen_5_41_beameffects.hepmc input.hepmc #Just to make npsim command easier to read
+npsim --compactFile $DETECTOR_PATH/epic_craterlake.xml --numberOfEvents 100 --inputFiles input.hepmc --outputFile output.edm4hep.root
+
+#Run reconstruction
+eicrecon -Ppodio:output_file=eicrecon_out.root -Pjana:nevents=100 -Pdd4hep:xml_files=epic_craterlake.xml output.edm4hep.root
+```
+The output ROOT file from this simulation can then be analyzed as discussed below.
+
+To do: Add information about running on a batch farm.
+
 Analysis
 --------
 In progress...
-
