@@ -45,6 +45,17 @@ abconv -o elas_gen_5_41_beameffects elas_gen_5_41.hepmc
 ```
 This will create a file called ```elas_gen_5_41_beameffects.hepmc```, which can then be used as an input to the <i>ePIC</i> detector simulation.
 
+Summary of generated data
+--------------------------
+| Data Set | Generator | Beam Energies | Run Information                                     | QED effects | Events | Cross Section (fb) | Int. Lumin. (fb<sup>-1</sup>)|
+|:---------|:---------:|:-------------:|:---------------------------------------------------:|:-----------:|:------:|:------------------:|:----------------------------:| 
+|1         |ROOT FOAM  |5x41 GeV       |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13709              | 7.29                         |
+|2         |DJANGOH    |5x41 GeV       |1 < Q<sup>2</sup><sub>e</sub> < 1000 GeV<sup>2</sup> |Yes          |100k    | $4.47 \times 10^7$ | $2.24 \times 10^{-3}$        |
+
+The cross sections in the table above are reported by the event generator. The corresponding integrated luminosity is calculated using that cross section and the number of generated events.
+
+The generated files can be found here. The <i>ROOT FOAM</i> events are stored in HepMC3 format, both before and after applying the beam-effects afterburner. The <i>DJANGOH</i> events are stored in the <i>eic-smear</i> and HepMC3 formats before applying the beam-effects afterburner. They are stored in the HepMC3 formate after applying the beam-effects afterburner.
+
 Running generated events through the ePIC simulation
 ----------------------------------------------------
 To run the 100 generated events through the detector simulation, access the [eic-shell environment](https://eic.github.io/tutorial-setting-up-environment/02-eic-shell/index.html).
