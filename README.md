@@ -50,11 +50,15 @@ Summary of generated data
 | Data Set | Generator | Beam Energies | Run Information                                     | QED effects | Events | Cross Section (fb) | Int. Lumin. (fb<sup>-1</sup>)|
 |:---------|:---------:|:-------------:|:---------------------------------------------------:|:-----------:|:------:|:------------------:|:----------------------------:| 
 |1         |ROOT FOAM  |5x41 GeV       |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13709              | 7.29                         |
-|2         |DJANGOH    |5x41 GeV       |1 < Q<sup>2</sup><sub>e</sub> < 1000 GeV<sup>2</sup> |Yes          |100k    | $4.47 \times 10^7$ | $2.24 \times 10^{-3}$        |
+|2         |ROOT FOAM  |5x100 GeV      |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13772              | 7.26                         | 
+|3         |ROOT FOAM  |10x100 GeV     |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13794              | 7.25                         |
+|4         |ROOT FOAM  |10x275 GeV     |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13808              | 7.24                         |
+|5         |ROOT FOAM  |18x275 GeV     |5 < Q<sup>2</sup> < 200 GeV<sup>2</sup>              |No           |100k    | 13811              | 7.24                         |
+|6         |DJANGOH    |5x41 GeV       |1 < Q<sup>2</sup><sub>e</sub> < 1000 GeV<sup>2</sup> |Yes          |100k    | $4.47 \times 10^7$ | $2.24 \times 10^{-3}$        |
 
 The cross sections in the table above are reported by the event generator. The corresponding integrated luminosity is calculated using that cross section and the number of generated events.
 
-The generated files can be found here. The <i>ROOT FOAM</i> events are stored in HepMC3 format, both before and after applying the beam-effects afterburner. The <i>DJANGOH</i> events are stored in the <i>eic-smear</i> and HepMC3 formats before applying the beam-effects afterburner. They are stored in the HepMC3 formate after applying the beam-effects afterburner.
+The generated files can be found [here](https://drive.google.com/drive/folders/1hFNEeY1zXye9A9m9SW1HtPYu7m9JPF5p?usp=sharing). The <i>ROOT FOAM</i> events are stored in HepMC3 format, both before and after applying the beam-effects afterburner. The <i>DJANGOH</i> events are stored in the <i>eic-smear</i> and HepMC3 formats before applying the beam-effects afterburner. They are stored in the HepMC3 formate after applying the beam-effects afterburner.
 
 Running generated events through the ePIC simulation
 ----------------------------------------------------
