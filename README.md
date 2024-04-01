@@ -27,6 +27,7 @@ While you can compile DJANGOH locally, I compile and run using the [eic-shell en
 Although the LHAPDF grids are not used for the elastic e-p running, you still need to set the location of the grids. When working in the <i>eic-shell</i>, you can link to the existing LHAPDF6 grids:
 ```
 ln -s /cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
+export LHAPDF_DATA_PATH=/cvmfs/sft.cern.ch/lcg/external/lhapdfsets/current
 ```
 
 To run an elastic simulation with DJANGOH, use the [run_ep_rad_elas_5_41.sh](run_ep_rad_elas_5_41.sh) file in this local repository and do the following:
