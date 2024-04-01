@@ -2,8 +2,8 @@
 ########################
 
 # In this code, for radiative elastic events (e + p -> e + p + gamma),
-# a the true Q2 range as a function of electron x. Each curve represents
-# a fixed value of electron Q2. Note for these radiative elastic events,
+# plot the true Q2 range as a function of electron x. Each curve represents
+# a fixed value of electron Q2. Note that for these radiative elastic events,
 # the true x is equal to 1.
 
 from cProfile import label
