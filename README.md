@@ -67,7 +67,7 @@ To run the 100 generated events through the detector simulation, access the [eic
 
 Then simply do the following:
 ```
-source /opt/detector/setup.sh
+source /opt/detector/epic-main/bin/thisepic.sh
 
 #Run DIS events through npsim
 ln -s elas_gen_5_41_beameffects.hepmc input.hepmc #Just to make npsim command easier to read
