@@ -107,7 +107,8 @@ void Elastic_reco(){
     TTreeReaderArray<double> gen_vy(tr, "MCParticles.vertex.y");
     TTreeReaderArray<double> gen_vz(tr, "MCParticles.vertex.z");
   
-    TTreeReaderArray<int> rec_pid(tr, "ReconstructedChargedParticles.PDG");
+    TTreeReaderArray<int> rec_pid(tr, "ReconstructedChargedParticles.PDG"); //Uses PID lookup tables
+    TTreeReaderArray<int> rec_charge(tr, "ReconstructedChargedParticles.charge");
     TTreeReaderArray<float> rec_px(tr, "ReconstructedChargedParticles.momentum.x");
     TTreeReaderArray<float> rec_py(tr, "ReconstructedChargedParticles.momentum.y");
     TTreeReaderArray<float> rec_pz(tr, "ReconstructedChargedParticles.momentum.z");
@@ -177,19 +178,21 @@ void Elastic_reco(){
         auto Q2_true = -1. * ((e_beam_true - elec_gen).Mag2());
 
 	//Loop over reconstructed tracks for electron and pion
-	for(int irec=0;irec<rec_pid.GetSize();irec++){
+	for(int irec=0;irec<rec_charge.GetSize();irec++){
 		rec_vec.SetXYZM(rec_px[irec],rec_py[irec],rec_pz[irec],rec_mass[irec]);
                 rec_vec_co = apply_boost(e_beam,p_beam,rec_vec);
 
-		if(rec_pid[irec]==11){
+		//if(rec_pid[irec]==11){ //using PID lookup table info
+		if(rec_charge[irec]<0){
 			h2_elec->Fill(rec_vec.Theta()*TMath::RadToDeg(),rec_vec.P());
                         elec_rec = rec_vec;
                         elec_rec_co = rec_vec_co;
                         found_elec = true;
 		}
 
-                if(rec_pid[irec]==2212){
-			h2_proton->Fill(rec_vec.Theta()*TMath::RadToDeg(),rec_vec.P());
+                //if(rec_pid[irec]==2212){ //using PID lookup table info
+                if(rec_charge[irec]>0){
+                        h2_proton->Fill(rec_vec.Theta()*TMath::RadToDeg(),rec_vec.P());
                         prot_rec = rec_vec;
                         prot_rec_co = rec_vec_co;
                         found_prot = true;

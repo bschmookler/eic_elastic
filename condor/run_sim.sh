@@ -6,7 +6,7 @@ export LD_LIBRARY_PATH="${DIR}/install/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 echo "In directory $PWD!"
 
 #Set Number of events
-NEVENTS=100
+NEVENTS=10000
 
 #Input HepMC file
 START=$((${NEVENTS}*$1))
@@ -21,7 +21,7 @@ echo "Skipping first ${START} events!"
 echo "Running ${NEVENTS} events!"
 echo ""
 
-source /opt/detector/setup.sh
+source /opt/detector/epic-main/bin/thisepic.sh
 
 #Run DIS events through npsim
 npsim --compactFile $DETECTOR_PATH/epic_craterlake.xml --numberOfEvents ${NEVENTS} --skipNEvents ${START} --inputFiles input.hepmc  --outputFile output.edm4hep.root
